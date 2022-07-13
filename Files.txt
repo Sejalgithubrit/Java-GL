@@ -1,0 +1,205 @@
+package exception;
+
+import java.io.*;
+
+public class Files
+{
+
+public static void main(String[] args) throws IOException
+{
+// TODO Auto-generated method stub
+
+String data="This is bufferedoutput stream";
+try
+{  //create file output stream
+FileOutputStream file=new FileOutputStream("sejal.txt");
+//Data Output stream
+DataOutputStream data3= new DataOutputStream(file);  
+
+//ByteArrayOutputStream  File
+ByteArrayOutputStream bout=new ByteArrayOutputStream();  
+     file.write(10);
+     bout.write(65);    
+     bout.writeTo(file);    
+     bout.writeTo(file);
+     file.flush();
+       
+
+//Buffered Output Stream
+BufferedOutputStream output=new BufferedOutputStream(file);
+
+byte[]array= data.getBytes();
+//Write data to output stream
+output.write(array);
+
+file.close();
+System.out.println("successfully output stream");
+
+//File Output stream filter
+File data5 = new File("sejal.txt");  
+       FileOutputStream file7 = new FileOutputStream(data5);  
+ FilterOutputStream filter = new FilterOutputStream(file7);  
+       String s="Welcome to Filter Output Stream.";      
+       byte b[]=s.getBytes();      
+       filter.write(b);    
+       filter.flush();  
+       filter.close();  
+       file.close();  
+       System.out.println("Successfully entered");  
+}
+catch(Exception e)
+{
+  e.getStackTrace();
+}
+
+// File Input Stream
+// Creates an array of byte
+   byte[] array = {1, 2, 3, 4};
+
+try {
+  FileInputStream fin1=new FileInputStream("sejal.txt");    
+  FileInputStream fin2=new FileInputStream("raj.txt");  
+  //File Output stream
+  FileOutputStream fout=new FileOutputStream("main.txt");      
+  //sequence 0utput stream
+  SequenceInputStream sequence=new SequenceInputStream(fin1,fin2);
+ 
+ 
+  int i;    
+  while((i=sequence.read())!=-1)    
+  {    
+    fout.write(i);        
+  }    
+  sequence.close();    
+  fout.close();      
+  fin1.close();      
+  fin2.close();      
+  System.out.println("Success..");  
+ 
+  ByteArrayInputStream input = new ByteArrayInputStream(array);
+
+  System.out.print("The bytes read from the input stream: ");
+
+   for(int l= 0; l < array.length; l++) {
+
+       // Reads the bytes
+     int data1 = input.read();
+     System.out.print(data1 + ", ");
+     }
+   InputStream input1 = new FileInputStream("raj.txt");  
+   DataInputStream inst = new DataInputStream(input1);  
+   int count = input1.available();  
+   byte[] ary = new byte[count];  
+   inst.read(ary);  
+   for (byte bt : ary) {  
+     char k = (char) bt;  
+     System.out.print(k+"-");  
+   
+     input.close();
+     
+     //fileInput Stream Filter
+     File data6 = new File("sejal.txt");  
+       FileInputStream  file9 = new FileInputStream(data6);  
+       FilterInputStream filter = new BufferedInputStream(file9);  
+       int g =0;  
+       while((g=filter.read())!=-1){  
+           System.out.print((char)g);
+           System.out.println("ileInput Stream Filter");
+       }  
+       file9.close();  
+       filter.close();  
+}
+}
+catch(Exception e) {
+e.getStackTrace();Object Stream
+ObjectStreamClass osc = ObjectStreamClass.lookup(String.class);  
+ 
+    // ObjectStreamClass for string
+    System.out.println("" + osc.getField("hash"));  
+    //Console method
+    Console console=System.console();    
+    System.out.println("Enter your full name: ");    
+     
+     
+
+    boolean bool=false;
+    //file Permission
+    FilePermission obj2 = new FilePermission("raj", "write");
+    FilePermission obj3 = new FilePermission("SEJAL", "read");
+   
+    // Use of equals method
+    bool = obj3.equals(obj2);
+    System.out.println("obj2 equals obj3 : " + bool);
+   
+    String destFile = "sejal.txt";
+//Buffered Writer
+     try (BufferedWriter bw = new BufferedWriter(new FileWriter(destFile))) {
+      bw.append("test");
+      bw.newLine();
+      bw.append("test1");
+      bw.newLine();
+      bw.append("test2");
+      bw.newLine();
+      bw.append("test3");
+     
+      bw.flush();
+    }  catch (Exception e2) {
+      e2.printStackTrace();
+    }
+     
+     // CharArrayReader
+     char[] ary = { 'j', 'a', 'v', 'a'};  
+     CharArrayReader reader1 = new CharArrayReader(ary);  
+     int k = 0;  
+     // Read until the end of a file  
+     while ((k = reader1.read()) != -1) {  
+       char ch = (char) k;  
+       System.out.print(ch + " : ");  
+       System.out.println(k);  
+     }
+   
+     //Char Array Writer
+     CharArrayWriter out=new CharArrayWriter();    
+     out.write("Welcome to java");    
+     FileWriter f1=new FileWriter("sejal.txt");
+     out.writeTo(f1);  
+     f1.close();
+     System.out.println("successfully char array writer");
+     
+     
+     try {
+    //Print Writer Output
+         PrintWriter output0 = new PrintWriter("sejal.txt");
+
+         int age = 18;
+
+         output0.printf("age is.", age);
+         output0.close();
+       }
+       catch(Exception e) {
+         e.getStackTrace();
+       }
+     
+     
+  //Print Stream Method
+     
+     String data0 = "This is a file.";
+
+     try {
+         PrintStream output8 = new PrintStream("sejal.txt");
+
+         output8.print(data0);
+         output8.close();
+     }
+     catch(Exception e) {
+         e.getStackTrace();
+     }
+     
+   
+     
+     
+
+     
+     
+     }
+}
